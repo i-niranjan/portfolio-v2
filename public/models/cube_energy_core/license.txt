@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cube Energy Core
+* source:	https://sketchfab.com/3d-models/cube-energy-core-6f2f92714f0d49ddb2cb41fd71251fa9
+* author:	Aldrian.Tuazon (https://sketchfab.com/Aldrian.Tuazon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cube Energy Core" (https://sketchfab.com/3d-models/cube-energy-core-6f2f92714f0d49ddb2cb41fd71251fa9) by Aldrian.Tuazon (https://sketchfab.com/Aldrian.Tuazon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
