@@ -5,19 +5,17 @@ import Lights from "../three/Lights";
 import { Environment } from "@react-three/drei";
 const Hero = () => {
   return (
-    <section className="h-screen w-full flex items-center justify-center bg-black">
-      <Canvas camera={{ position: [0, 2, 5] }}>
-        <Lights />
-        <EnergyCore />
+    <>
+      <section className="h-screen w-full flex items-center justify-center bg-black">
+        <Canvas className="" camera={{ position: [0, 1, 5] }}>
+          <Lights />
+          <EnergyCore />
 
-        <Environment preset="city" />
-        <OrbitControls />
-      </Canvas>
-      <div className="absolute text-white text-center">
-        <h1 className="text-4xl font-bold">Hey, I'm Niranjan 👋</h1>
-        <p className="text-lg">MERN Stack Developer | Tech Explorer</p>
-      </div>
-    </section>
+          <OrbitControls enableZoom={false} enablePan={false} />
+        </Canvas>
+      </section>
+      <section></section>
+    </>
   );
 };
 
