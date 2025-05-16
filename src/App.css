@@ -1,3 +1,4 @@
+@import url("https://geisto.vercel.app/font.css");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -117,4 +118,18 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+body,
+span,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div {
+  font-family: "Geist", sans-serif;
 }

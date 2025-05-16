@@ -9,7 +9,7 @@ const EnergyCore = () => {
   const modelRef = useRef();
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.001; // Adjust speed here
+      modelRef.current.rotation.y += 0.0001; // Adjust speed here
     }
   });
 
