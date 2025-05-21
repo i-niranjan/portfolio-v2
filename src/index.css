@@ -1,5 +1,5 @@
 @import "tailwindcss";
-h1 h2 h3 h4 h5 h6 div p span {
+h1 h2 h3 h4 h5 h6 div p span li {
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
 }
