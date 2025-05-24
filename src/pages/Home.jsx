@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import Header from "../components/Header";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
+import { BsWordpress } from "react-icons/bs";
+import { RiNextjsFill } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger);
 import { motion } from "motion/react";
 import { RainbowButton } from "../components/magicui/rainbow-button";
@@ -49,6 +50,9 @@ import { LineShadowText } from "../components/magicui/line-shadow-text";
 import { ServiceCard } from "../components/ServiceCard";
 import { LampContainer } from "../components/ui/lamp";
 import { PinContainer } from "../components/ui/3d-pin";
+import { AnimatedTooltip } from "../components/ui/animated-tooltip";
+import { IconBrandNextjs, IconBrandWordpress } from "@tabler/icons-react";
+
 function Home() {
   return (
     <>
@@ -231,29 +235,94 @@ const FeaturesSection = () => {
 };
 
 const RecentWork = () => {
+  const proj1Tooltip = [
+    {
+      id: 1,
+      name: "Javascript",
+      image: "/assets/icons8-javascript.svg",
+    },
+
+    {
+      id: 3,
+      name: "Headless wordpress",
+      image: "/assets/icons8-wordpress.svg",
+    },
+    {
+      id: 4,
+      name: "TailwindCSS",
+      image: "/assets/icons8-tailwindcss.svg",
+    },
+    {
+      id: 2,
+      name: "Next.js",
+      image: "/assets/icons8-nextjs.svg",
+    },
+  ];
+  const proj2Tooltip = [
+    {
+      id: 1,
+      name: "React",
+      image: "/assets/icons8-react.svg",
+    },
+    {
+      id: 2,
+      name: "MongoDB",
+      image: "/assets/icons8-mongodb.svg",
+    },
+    {
+      id: 3,
+      name: "Gemeni",
+      image: "/assets/icons8-gemini-ai.svg",
+    },
+  ];
   return (
     <>
-      <div className="relative max-w-screen-xl mx-auto rounded-xl   h-screen px-20">
-        <div className="h-full backdrop-blur-2xl rounded-xl p-10">
+      <div className="relative max-w-screen-xl mx-auto rounded-xl   px-20">
+        <div className="h-full backdrop-blur-2xl pb-20 rounded-xl p-10">
           <div>
             <h2 className="text-4xl md:text-4xl bg-gradient-to-br font-medium from-slate-300 to-slate-500  bg-clip-text   tracking-tight text-transparent">
               Recent Work
             </h2>
-            <div className="flex gap-2 p-10">
+            <div className="flex justify-around gap-2 p-10">
               <PinContainer
-                title="/ui.aceternity.com"
-                href="https://twitter.com/mannupaaji"
+                className={"900 "}
+                title="www.yonnovascientificconsultancy.com"
+                href="https://www.yonnovascientificconsultancy.com/"
               >
                 <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-                  <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
+                  <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-lg text-slate-100">
                     Yonnova Scientific Solutions
                   </h3>
                   <div className="text-base !m-0 !p-0 font-normal">
                     <span className="text-slate-500 ">
-                      Company profile website with next.js + headless wordpress
+                      Modern website built with Next.js and Headless WordPress
+                      backend.
                     </span>
                   </div>
-                  <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+                  <div className="flex mt-2">
+                    <AnimatedTooltip items={proj1Tooltip} />
+                  </div>
+                  <div className="bg-[url(/assets/yonnova-2.webp)]  bg-cover flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+                </div>
+              </PinContainer>
+              <PinContainer
+                className={"900 "}
+                title="fixmywords.com"
+                href="https://fixmywords.iniranjan.com/"
+              >
+                <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+                  <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-lg text-slate-100">
+                    FixMyWords
+                  </h3>
+                  <div className="text-base !m-0 !p-0 font-normal">
+                    <span className="text-slate-500 ">
+                      Gemini powered text tool built for instant editing
+                    </span>
+                  </div>
+                  <div className="flex mt-2">
+                    <AnimatedTooltip items={proj2Tooltip} />
+                  </div>
+                  <div className="bg-[url(/assets/fixmywords.webp)]  bg-cover flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
                 </div>
               </PinContainer>
             </div>
