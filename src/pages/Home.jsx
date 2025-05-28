@@ -52,6 +52,9 @@ import { LampContainer } from "../components/ui/lamp";
 import { PinContainer } from "../components/ui/3d-pin";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import { IconBrandNextjs, IconBrandWordpress } from "@tabler/icons-react";
+import { TextHoverEffect } from "../components/ui/text-hover-effect";
+import { SparklesCore } from "../components/ui/sparkles";
+import FooterGame from "../components/FooterGame";
 
 function Home() {
   return (
@@ -61,7 +64,8 @@ function Home() {
       <HeroSection />
       <FeaturesSection />
       <RecentWork />
-      <section className="h-screen"></section>
+
+      <Footer />
     </>
   );
 }
@@ -329,6 +333,16 @@ const RecentWork = () => {
           </div>
         </div>
       </div>
+    </>
+  );
+};
+
+const Footer = () => {
+  return (
+    <>
+      <footer className="h-[20rem] border-t backdrop-blur-xl bg-black/50 mt-20">
+        <FooterGame />
+      </footer>
     </>
   );
 };
