@@ -1,15 +1,11 @@
-import { div, section } from "motion/react-client";
-import React, { useEffect } from "react";
 import Header from "../components/Header";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { BsWordpress } from "react-icons/bs";
-import { RiNextjsFill } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger);
 import { motion } from "motion/react";
 import { RainbowButton } from "../components/magicui/rainbow-button";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
-import { ArrowBigLeft, ArrowUpRight, Shield } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ShinyButton } from "../components/magicui/shiny-button";
 import StaggerGrid from "../components/StaggerGrid";
 import {
@@ -46,15 +42,19 @@ import {
   SiFigma,
   SiShadcnui,
 } from "react-icons/si";
-import { LineShadowText } from "../components/magicui/line-shadow-text";
 import { ServiceCard } from "../components/ServiceCard";
-import { LampContainer } from "../components/ui/lamp";
 import { PinContainer } from "../components/ui/3d-pin";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import { IconBrandNextjs, IconBrandWordpress } from "@tabler/icons-react";
-import { TextHoverEffect } from "../components/ui/text-hover-effect";
-import { SparklesCore } from "../components/ui/sparkles";
-import FooterGame from "../components/FooterGame";
+import {
+  IconHomeFilled,
+  IconSettingsFilled,
+  IconBriefcase2Filled,
+  IconUserFilled,
+  IconBrandGithubFilled,
+  IconBrandLinkedinFilled,
+  IconBrandInstagramFilled,
+  IconBrandXFilled,
+} from "@tabler/icons-react";
 
 function Home() {
   return (
@@ -64,7 +64,6 @@ function Home() {
       <HeroSection />
       <FeaturesSection />
       <RecentWork />
-
       <Footer />
     </>
   );
@@ -75,7 +74,10 @@ export default Home;
 const HeroSection = () => {
   return (
     <>
-      <section className="h-[50vh] flex items-center justify-center flex-col w-full max-w-screen-2xl mx-auto z-20 mt-[30vh] mb-[30vh]">
+      <section
+        id="home"
+        className="h-[50vh] mb:w-full flex items-center justify-center flex-col w-full max-w-screen-2xl mx-auto z-20 mt-[15vh] mb-[15vh] md:mt-[30vh] md:mb-[30vh]"
+      >
         <div>
           <motion.h1
             initial={{ opacity: 0.5, y: 100 }}
@@ -97,23 +99,26 @@ const HeroSection = () => {
               shimmerSize="0.10em"
             >
               <span className="text-white">
-                {" "}
                 // currently shipping cool stuff
-              </span>{" "}
+              </span>
               <ArrowUpRight color="white" className="ml-2" />
             </ShimmerButton>
-            Hey, I'm Niranjan Chaudhari <br />{" "}
+            Hey, I'm Niranjan
+            <br />{" "}
             <span className="text-4xl font-light bg-gradient-to-b from-slate-400 to-slate-800 bg-clip-text">
               A Full Stack Developer
             </span>
-            <div className="flex gap-5 mt-20 justify-center w-full items-center">
+            <div className="flex  gap-2 mt-20 justify-center w-full items-center">
               <RainbowButton
                 variant=""
-                className="w-1/4 py-6 rounded-full text-xl tracking-normal"
+                className="md:w-1/4 py-5 hidden md:flex md:py-6   rounded-full text-xl tracking-normal"
               >
                 View Work
               </RainbowButton>
-              <ShinyButton className="w-1/4 py-3">Hire Me</ShinyButton>
+              <ShinyButton className="block md:hidden md:w-1/4 py-3">
+                View Work
+              </ShinyButton>
+              <ShinyButton className="md:w-1/4 py-3">Hire Me</ShinyButton>
             </div>
           </motion.h1>
         </div>
@@ -179,7 +184,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="max-w-screen-xl w-full mx-auto  ">
+    <section id="tools" className="max-w-screen-xl w-full mx-auto  ">
       <div className="relative">
         <motion.h2
           initial={{ opacity: 0, x: -100 }}
@@ -188,7 +193,7 @@ const FeaturesSection = () => {
             duration: 1,
             ease: "easeInOut",
           }}
-          className=" w-fit sticky-heading   flex-col  gap-2  flex  items-start  py-2   bg-gradient-to-br font-medium from-slate-300 to-slate-500  bg-clip-text  text-4xl  tracking-tight text-transparent md:text-6xl"
+          className=" w-fit sticky-heading   flex-col  gap-2  flex  items-start  py-2 px-5 md:px-auto   bg-gradient-to-br font-medium from-slate-300 to-slate-500  bg-clip-text  text-4xl  tracking-tight text-transparent md:text-6xl"
         >
           <span
             className="cursor-default flex items-center justify-start gap-4 text-base tracking-normal py-1 "
@@ -217,7 +222,7 @@ const FeaturesSection = () => {
         </motion.h2>
 
         {/* DEV ARSENAL */}
-        <div className="border border-white/5 backdrop-blur m-20 rounded-md h-full px-10 py-10 ">
+        <div className="border border-white/5 backdrop-blur md:m-20 rounded-md h-full px-10 py-10 ">
           <h2 className="text-2xl flex justify-end items-center gap-2  bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-right pb-10 md:text-4xl  tracking-tight text-transparent  ">
             My Dev Arsenal 🛠️
           </h2>
@@ -225,7 +230,7 @@ const FeaturesSection = () => {
         </div>
 
         {/* Services I Offer */}
-        <div className=" m-20 py-10">
+        <div className="px-5 md:px-auto  md:m-20 py-10">
           <h2 className="text-2xl flex justify-start items-center gap-2  bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-left pb-10 md:text-4xl  tracking-tight text-transparent  ">
             Things I Can Help You With
           </h2>
@@ -281,13 +286,16 @@ const RecentWork = () => {
   ];
   return (
     <>
-      <div className="relative max-w-screen-xl mx-auto rounded-xl   px-20">
-        <div className="h-full backdrop-blur-2xl pb-20 rounded-xl p-10">
+      <div
+        id="work"
+        className="relative max-w-screen-xl mx-auto rounded-xl   md:px-20"
+      >
+        <div className="h-full backdrop-blur-2xl pb-20 rounded-xl p-5 md:p-10">
           <div>
-            <h2 className="text-4xl md:text-4xl bg-gradient-to-br font-medium from-slate-300 to-slate-500  bg-clip-text   tracking-tight text-transparent">
+            <h2 className="text-4xl md:text-4xl my-5 md:my-auto bg-gradient-to-br font-medium from-slate-300 to-slate-500  bg-clip-text   tracking-tight text-transparent">
               Recent Work
             </h2>
-            <div className="flex justify-around gap-2 p-10">
+            <div className="flex flex-wrap justify-center md:justify-around items-center gap-y-20 md:gap-2  md:p-10">
               <PinContainer
                 className={"900 "}
                 title="www.yonnovascientificconsultancy.com"
@@ -338,10 +346,111 @@ const RecentWork = () => {
 };
 
 const Footer = () => {
+  const menuItems = [
+    { name: "Home", icon: IconHomeFilled, href: "#home" },
+    { name: "Skills & Tools", icon: IconSettingsFilled, href: "#skills" },
+    { name: "Recent Work", icon: IconBriefcase2Filled, href: "#work" },
+    { name: "About Me", icon: IconUserFilled, href: "#about" },
+  ];
+  const socialIcons = [
+    {
+      icon: IconBrandGithubFilled,
+      url: "https://github.com/i-niranjan",
+    },
+    {
+      icon: IconBrandLinkedinFilled,
+      url: "https://www.linkedin.com/in/niranjan-chaudhari-26157b194/",
+    },
+    {
+      icon: IconBrandInstagramFilled,
+      url: "https://www.instagram.com/imniranjann/",
+    },
+    {
+      icon: IconBrandXFilled,
+      url: "https://x.com/imniranjann", // formerly Twitter
+    },
+  ];
   return (
     <>
-      <footer className="h-[20rem] border-t backdrop-blur-xl bg-black/50 mt-20">
-        <FooterGame />
+      <footer className="relative backdrop-blur-2xl bg-gradient-to-br from-gray-900 via-black to-black text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-pink-500 rounded-full blur-xl animate-pulse delay-500"></div>
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <h2 className="text-4xl  bg-gradient-to-br font-medium from-slate-300 to-slate-500 bg-clip-text text-transparent">
+                  Let's Connect
+                </h2>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Ready to bring your ideas to life? I'd love to hear about your
+                  next project.
+                </p>
+              </div>
+
+              <div className="flex space-x-4">
+                {socialIcons.map((Item) => (
+                  <a
+                    target="_blank"
+                    href={Item.url}
+                    key={Item.url}
+                    className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300 cursor-pointer group"
+                  >
+                    <Item.icon />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Right side - Navigation */}
+            <div className="space-y-8">
+              <h3 className="text-2xl bg-gradient-to-br font-medium from-slate-300 to-slate-500 bg-clip-text text-transparent">
+                Menu
+              </h3>
+              <nav className="grid grid-cols-2 gap-4">
+                {menuItems.map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.href}
+                    className="group relative overflow-hidden p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className=" p-1 bg-gradient-to-r from-blue-400 to-cyan-900 rounded-full group-hover:scale-150 transition-transform duration-300">
+                        <item.icon size={20} />
+                      </div>
+                      <span className="text-white/80 group-hover:text-white font-medium transition-colors duration-300">
+                        {item.name}
+                      </span>
+                    </div>
+
+                    {/* Hover effect line */}
+                    <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-900 w-0 group-hover:w-full transition-all duration-500"></div>
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* Bottom section */}
+          <div className="mt-16 pt-8 border-t border-white/10">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="text-gray-400 text-sm">
+                © 2025 Niranjan Chaudhari. |{" "}
+                <a href="mailto:iniranjanchaudhari@gmail.com">
+                  iniranjanchaudhari@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-6 text-sm text-gray-400"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative bottom gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600  to-cyan-900"></div>
       </footer>
     </>
   );
