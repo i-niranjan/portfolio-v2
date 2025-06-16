@@ -1,6 +1,7 @@
 import React from "react";
 import { ShinyButton } from "./magicui/shiny-button";
 import { Button } from "@/components/ui/button";
+
 import {
   IconBrandGithub,
   IconMail,
@@ -25,6 +26,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Link } from "react-router";
 function Header() {
   return (
     <nav className="flex w-full justify-center z-50 relative">
@@ -60,37 +62,28 @@ function Header() {
                   <nav>
                     <ul className="space-y-1 px-3">
                       <li>
-                        <a
+                        <Link
                           href="#home"
                           className="flex  items-center px-3 py-3 text-xl  rounded-lg hover:bg-gray-100 transition-colors"
                         >
                           Home
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           href="#skills"
                           className="flex  items-center px-3 py-3 text-xl  rounded-lg hover:bg-gray-100 transition-colors"
                         >
                           Skills & Tools
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           href="#work"
                           className="flex  items-center px-3 py-3 text-xl  rounded-lg hover:bg-gray-100 transition-colors"
-                        >
-                          Recent Work
-                        </a>
+                        ></Link>
                       </li>
-                      <li>
-                        <a
-                          href="#about"
-                          className="flex  items-center px-3 py-3 text-xl  rounded-lg hover:bg-gray-100 transition-colors"
-                        >
-                          About Me
-                        </a>
-                      </li>
+
                       <li className="pt-4 px-3">
                         <Button className="w-full">Contact Me</Button>
                       </li>
@@ -103,10 +96,15 @@ function Header() {
         </div>
         <div className="hidden md:block">
           <ul className="flex gap-10 px-5 text-white ">
-            <li className="text-base  ">Home</li>
+            <li className="text-base  ">
+              {" "}
+              <Link to={"/"}>Home</Link>
+            </li>
             <li className="text-base ">Skills & Tools</li>
             <li className="text-base ">Recent Work</li>
-            <li className="text-base ">About Me</li>
+            <li className="text-base ">
+              <Link to={"/blog"}>Blogs</Link>
+            </li>
           </ul>
         </div>
         <div className="hidden md:block">
