@@ -1,0 +1,44 @@
+name: Deploy React App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 🔐 Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PROD_SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.PROD_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: 🚚 Deploy React App to Server
+        run: |
+          ssh ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_IP }} << 'EOF'
+            set -e
+            echo "➡ Pulling latest code..."
+            mkdir -p /apps/react
+            cd /apps/react
+
+            # Clone or pull repo
+            if [ ! -d ".git" ]; then
+              git clone git@github.com:i-niranjan/portfolio-v2.git .
+            else
+              git pull origin main
+            fi
+
+            echo "Installing dependencies and building..."
+            npm install
+            npm run build
+
+            echo "React app deployed!"
+          EOF
