@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { getAllBlog } from "../services/BlogService";
 import { Calendar, Clock, ArrowRight, Search } from "lucide-react";
 import { Link } from "react-router";
+const API_URL = import.meta.env.VITE_API_URL;
 function Blog() {
   const [allBlog, selectAllBlog] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,6 +12,7 @@ function Blog() {
   useEffect(() => {
     const fetchAllBlog = async () => {
       const res = await getAllBlog();
+      console.log(JSON.stringify(res, null, 2));
 
       selectAllBlog(res.data);
       setFilteredBlogs(res.data);
@@ -69,15 +71,12 @@ function Blog() {
   };
 
   const getCoverImageUrl = (coverImage) => {
-    if (!coverImage) return null;
+    const file = coverImage?.data?.attributes;
+    if (!file) return null;
 
-    // Use medium format if available, otherwise fall back to original
-    if (coverImage.formats && coverImage.formats.medium) {
-      return coverImage.formats.medium.url;
-    } else if (coverImage.formats && coverImage.formats.small) {
-      return coverImage.formats.small.url;
-    }
-    return coverImage.url;
+    if (file.formats?.medium) return file.formats.medium.url;
+    if (file.formats?.small) return file.formats.small.url;
+    return file.url;
   };
 
   return (
@@ -90,9 +89,7 @@ function Blog() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {filteredBlogs?.length === 0 ? (
             <div className="text-center py-20">
-              <div className="text-gray-500 text-lg">
-                No posts found matching your search.
-              </div>
+              <div className="text-gray-500 h-100 rounded-2xl bg-accent animate-pulse w-full text-lg"></div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -107,8 +104,11 @@ function Blog() {
                     {/* Cover Image */}
 
                     <div className="relative h-48 overflow-hidden">
+                      {console.log(`${API_URL}${blog.cover_image.url}`)}
                       <img
-                        src={`http://localhost:1337${blog?.cover_image.url}`}
+                        src={`${API_URL.replace(/\/$/, "")}${
+                          blog.cover_image.url
+                        }`}
                         alt={blog.Title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />

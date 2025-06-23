@@ -8,13 +8,16 @@ import {
   IconBrandLinkedinFilled,
   IconBrandInstagramFilled,
   IconBrandXFilled,
+  IconBrandBlogger,
+  IconArticle,
 } from "@tabler/icons-react";
+import { Link } from "react-router";
 export default function Footer() {
   const menuItems = [
-    { name: "Home", icon: IconHomeFilled, href: "#home" },
-    { name: "Skills & Tools", icon: IconSettingsFilled, href: "#skills" },
-    { name: "Recent Work", icon: IconBriefcase2Filled, href: "#work" },
-    { name: "About Me", icon: IconUserFilled, href: "#about" },
+    { name: "Home", icon: IconHomeFilled, href: "/#head" },
+    { name: "Skills & Tools", icon: IconSettingsFilled, href: "/#tools" },
+    { name: "Recent Work", icon: IconBriefcase2Filled, href: "/#work" },
+    { name: "Blogs", icon: IconArticle, href: "/blog#head" },
   ];
   const socialIcons = [
     {
@@ -61,8 +64,8 @@ export default function Footer() {
                 {socialIcons.map((Item) => (
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={Item.url}
-                    key={Item.url}
                     className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300 cursor-pointer group"
                   >
                     <Item.icon />
@@ -78,9 +81,9 @@ export default function Footer() {
               </h3>
               <nav className="grid grid-cols-2 gap-4">
                 {menuItems.map((item, index) => (
-                  <a
+                  <Link
                     key={index}
-                    href={item.href}
+                    to={item.href}
                     className="group relative overflow-hidden p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
                   >
                     <div className="flex items-center space-x-3">
@@ -94,7 +97,7 @@ export default function Footer() {
 
                     {/* Hover effect line */}
                     <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-900 w-0 group-hover:w-full transition-all duration-500"></div>
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>

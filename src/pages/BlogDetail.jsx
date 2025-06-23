@@ -12,7 +12,7 @@ import {
   Linkedin,
   Facebook,
 } from "lucide-react";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function BlogDetail() {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
@@ -123,7 +123,7 @@ function BlogDetail() {
           <div className="relative mb-12 group">
             <div className="overflow-hidden rounded-2xl shadow-2xl">
               <img
-                src={`http://localhost:1337${blog.cover_image.url}`}
+                src={`${API_URL.replace(/\/$/, "")}${blog.cover_image.url}`}
                 alt={blog.cover_image?.alternativeText || "Blog cover"}
                 className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
               />

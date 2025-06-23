@@ -112,14 +112,29 @@ const HeroSection = () => {
             <div className="flex  gap-2 mt-20 justify-center w-full items-center">
               <RainbowButton
                 variant=""
+                onClick={() => {
+                  window.location.hash = "#work";
+                }}
                 className="md:w-1/4 py-5 hidden md:flex md:py-6   rounded-full text-xl tracking-normal"
               >
                 View Work
               </RainbowButton>
-              <ShinyButton className="block md:hidden md:w-1/4 py-3">
+              <ShinyButton
+                onClick={() => {
+                  window.location.hash = "#work";
+                }}
+                className="block md:hidden md:w-1/4 py-3"
+              >
                 View Work
               </ShinyButton>
-              <ShinyButton className="md:w-1/4 py-3">Hire Me</ShinyButton>
+              <ShinyButton
+                onClick={() => {
+                  window.location.href = "mailto:iniranjanchaudhari@gmail.com";
+                }}
+                className="md:w-1/4 py-3"
+              >
+                Hire Me
+              </ShinyButton>
             </div>
           </motion.h1>
         </div>
@@ -289,7 +304,7 @@ const RecentWork = () => {
     <>
       <div
         id="work"
-        className="relative max-w-screen-xl mx-auto rounded-xl   md:px-20"
+        className="relative max-w-screen-xl mx-auto rounded-xl mb-20 md:px-20"
       >
         <div className="h-full backdrop-blur-2xl pb-20 rounded-xl p-5 md:p-10">
           <div>
