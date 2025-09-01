@@ -4,11 +4,12 @@ import "./index.css";
 import App from "./App.jsx";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router";
-
+import { Analytics } from "@vercel/analytics/next";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    <Analytics />
   </StrictMode>
 );
