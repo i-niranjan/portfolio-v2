@@ -45,17 +45,8 @@ import {
 import { ServiceCard } from "../components/ServiceCard";
 import { PinContainer } from "../components/ui/3d-pin";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import {
-  IconHomeFilled,
-  IconSettingsFilled,
-  IconBriefcase2Filled,
-  IconUserFilled,
-  IconBrandGithubFilled,
-  IconBrandLinkedinFilled,
-  IconBrandInstagramFilled,
-  IconBrandXFilled,
-} from "@tabler/icons-react";
 import Footer from "../components/Footer";
+import clsx from "clsx";
 
 function Home() {
   return (
@@ -128,9 +119,9 @@ const HeroSection = () => {
                 View Work
               </ShinyButton>
               <ShinyButton
-                onClick={() => {
-                  window.location.href = "mailto:iniranjanchaudhari@gmail.com";
-                }}
+                data-cal-namespace="30min"
+                data-cal-link="iniranjan/30min"
+                data-cal-config='{"layout":"month_view"}'
                 className="md:w-1/4 py-3"
               >
                 Hire Me
@@ -260,46 +251,64 @@ const FeaturesSection = () => {
 };
 
 const RecentWork = () => {
-  const proj1Tooltip = [
+  const recentProjects = [
     {
-      id: 1,
-      name: "Javascript",
-      image: "/assets/icons8-javascript.svg",
-    },
+      containerTitle: "www.yonnovascientificconsultancy.com",
+      href: "https://www.yonnovascientificconsultancy.com",
+      heading: "Yonnova Scientific Solutions",
+      shortDesc:
+        "Modern website built with Next.js and Headless WordPres backend.",
+      tooltip: [
+        {
+          id: 1,
+          name: "Javascript",
+          image: "/assets/icons8-javascript.svg",
+        },
 
-    {
-      id: 3,
-      name: "Headless wordpress",
-      image: "/assets/icons8-wordpress.svg",
+        {
+          id: 3,
+          name: "Headless wordpress",
+          image: "/assets/icons8-wordpress.svg",
+        },
+        {
+          id: 4,
+          name: "TailwindCSS",
+          image: "/assets/icons8-tailwindcss.svg",
+        },
+        {
+          id: 2,
+          name: "Next.js",
+          image: "/assets/icons8-nextjs.svg",
+        },
+      ],
+      bgImg: "/assets/yonnova-2.webp",
     },
     {
-      id: 4,
-      name: "TailwindCSS",
-      image: "/assets/icons8-tailwindcss.svg",
-    },
-    {
-      id: 2,
-      name: "Next.js",
-      image: "/assets/icons8-nextjs.svg",
+      containerTitle: "www.fixmywords.com",
+      href: "https://www.fixmywords.iniranjan.com",
+      heading: "FixMyWords",
+      shortDesc: "Gemini powered text tool built for instant editing",
+      tooltip: [
+        {
+          id: 1,
+          name: "React",
+          image: "/assets/icons8-react.svg",
+        },
+        {
+          id: 2,
+          name: "MongoDB",
+          image: "/assets/icons8-mongodb.svg",
+        },
+        {
+          id: 3,
+          name: "Gemeni",
+          image: "/assets/icons8-gemini-ai.svg",
+        },
+      ],
+      bgImg: "/assets/fixmywords.webp",
     },
   ];
-  const proj2Tooltip = [
-    {
-      id: 1,
-      name: "React",
-      image: "/assets/icons8-react.svg",
-    },
-    {
-      id: 2,
-      name: "MongoDB",
-      image: "/assets/icons8-mongodb.svg",
-    },
-    {
-      id: 3,
-      name: "Gemeni",
-      image: "/assets/icons8-gemini-ai.svg",
-    },
-  ];
+
   return (
     <>
       <div
@@ -312,47 +321,32 @@ const RecentWork = () => {
               Recent Work
             </h2>
             <div className="flex flex-wrap justify-center md:justify-around items-center gap-y-20 md:gap-2  md:p-10">
-              <PinContainer
-                className={"900 "}
-                title="www.yonnovascientificconsultancy.com"
-                href="https://www.yonnovascientificconsultancy.com/"
-              >
-                <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-                  <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-lg text-slate-100">
-                    Yonnova Scientific Solutions
-                  </h3>
-                  <div className="text-base !m-0 !p-0 font-normal">
-                    <span className="text-slate-500 ">
-                      Modern website built with Next.js and Headless WordPress
-                      backend.
-                    </span>
+              {recentProjects.map((item, index) => (
+                <PinContainer
+                  key={index}
+                  className={"900 "}
+                  title={item.containerTitle}
+                  href={item.href}
+                >
+                  <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+                    <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-lg text-slate-100">
+                      {item.heading}
+                    </h3>
+                    <div className="text-base !m-0 !p-0 font-normal">
+                      <span className="text-slate-500 ">{item.shortDesc}</span>
+                    </div>
+                    <div className="flex mt-2">
+                      <AnimatedTooltip items={item.tooltip} />
+                    </div>
+                    <div
+                      className={clsx(
+                        `bg-[url(${item.bgImg})]`,
+                        " bg-cover flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500"
+                      )}
+                    />
                   </div>
-                  <div className="flex mt-2">
-                    <AnimatedTooltip items={proj1Tooltip} />
-                  </div>
-                  <div className="bg-[url(/assets/yonnova-2.webp)]  bg-cover flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
-                </div>
-              </PinContainer>
-              <PinContainer
-                className={"900 "}
-                title="fixmywords.com"
-                href="https://fixmywords.iniranjan.com/"
-              >
-                <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-                  <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-lg text-slate-100">
-                    FixMyWords
-                  </h3>
-                  <div className="text-base !m-0 !p-0 font-normal">
-                    <span className="text-slate-500 ">
-                      Gemini powered text tool built for instant editing
-                    </span>
-                  </div>
-                  <div className="flex mt-2">
-                    <AnimatedTooltip items={proj2Tooltip} />
-                  </div>
-                  <div className="bg-[url(/assets/fixmywords.webp)]  bg-cover flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
-                </div>
-              </PinContainer>
+                </PinContainer>
+              ))}
             </div>
           </div>
         </div>

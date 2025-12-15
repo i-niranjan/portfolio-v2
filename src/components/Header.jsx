@@ -1,37 +1,30 @@
-import React from "react";
 import { ShinyButton } from "./magicui/shiny-button";
-import { Button } from "@/components/ui/button";
 
-import {
-  IconBrandGithub,
-  IconMail,
-  IconMenuDeep,
-  IconMenu2,
-} from "@tabler/icons-react";
+import { IconBrandGithub, IconMail, IconMenu2 } from "@tabler/icons-react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import { Link } from "react-router";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 function Header() {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "30min" });
+      cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+    })();
+  }, []);
   return (
-    <nav id="head" className="flex w-full justify-center z-50 relative">
-      <div className="flex w-[100%] justify-between  md:w-full border-b bg-black/50 backdrop-blur-md fixed border-gray-700 md:max-w-screen-2xl md:mx-auto md:justify-between items-center py-1  md:px-5 md:py-2 ">
+    <nav
+      id="head"
+      className="flex w-full mx-auto justify-center py-8 z-50 relative"
+    >
+      <div className="flex md:max-w-7xl  justify-between  md:w-full  bg-white/10 rounded-xl backdrop-blur-md fixed border-gray-700  md:mx-auto md:justify-between items-center py-1  md:px-5 md:py-2 ">
         <div className=" text-white md:border border-white/30 mx-1 px-4 py-2 dark:text-white rounded-2xl ">
           <Link to={"/#head"} className="font-semibold">
             NIRANJAN
@@ -144,9 +137,9 @@ function Header() {
         </div>
         <div className="hidden md:block">
           <ShinyButton
-            onClick={() => {
-              window.location.href = "mailto:iniranjanchaudhari@gmail.com";
-            }}
+            data-cal-namespace="30min"
+            data-cal-link="iniranjan/30min"
+            data-cal-config='{"layout":"month_view"}'
           >
             Contact Me
           </ShinyButton>
